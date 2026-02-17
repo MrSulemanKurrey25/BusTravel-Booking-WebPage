@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Journey</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <h1>SKYB.in</h1>
+        <div id="balance">Selected: <span id="seat-count">0</span> | Total: ₹<span id="total-price">0</span></div>
+    </nav>
+<div class="distence"><h3>Mumbai ➞ Goa </h3></div>
+    <!-- Bus Listing -->
+    <div class="container">
+        <h2>Available Buses</h2>
+        
+        <div class="bus-grid" id="bus-container"></div>
+        
+    </div>
+    
+
+    <!-- Seat Selection Modal -->
+    <div id="seat-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('seat-modal').style.display='none'">&times;</span>
+            <h3>Select Your Seats</h3>
+            <div class="bus-layout" id="seat-map">
+                <button onclick="selectSeat()">Seat A1</button>
+                <button onclick="selectSeat()">Seat A2</button>
+            </div>
+            <button class="btn-pay" onclick="showPayment()">Proceed to Payment</button>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <div class="timer-banner">
+                Time remaining: <span id="timer">05:00</span>
+            </div>
+            <h3>Booking Summary</h3>
+            <div class="summary-box">
+                <p>Seats Selected: <span id="sum-seats">0</span></p>
+                <p>Base Fare: ₹<span id="sum-base">0</span></p>
+                <p>Service Tax (5%): ₹<span id="sum-tax">0</span></p>
+                <hr>
+                <p><strong>Total Amount: ₹<span id="sum-total">0</span></strong></p>
+            </div>
+
+            <!-- Payment Options -->
+            <div class="payment-options">
+                <button class="tab-btn" onclick="togglePay('card')">Credit/Debit Card</button>
+                <button class="tab-btn" onclick="togglePay('upi')">UPI / QR Code</button>
+            </div>
+
+            <!-- Card Payment Form -->
+            <div id="card-form" class="pay-method" style="display:none;">
+                <p>Enter Card Details</p>
+                <input type="text" placeholder="Card Number">
+                <input type="text" placeholder="Expiry Date">
+                <input type="text" placeholder="CVV">
+                <button>Pay Now</button>
+            </div>
+
+            <!-- UPI QR Payment -->
+            <div id="upi-qr" class="pay-method" style="display:none; text-align:center;">
+                <p>Scan to Pay</p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=skyb.in652" alt="QR Code">
+                <p>UPI ID: skyb.in652bus@upi</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
